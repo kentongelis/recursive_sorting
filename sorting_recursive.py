@@ -106,13 +106,15 @@ def partition(items, low, high):
     return p
 
 
-def quick_sort(items, low=None, high=None):
+def quick_sort(items, low=0, high=None):
     """Sort given items in place by partitioning items in range `[low...high]`
     around a pivot item and recursively sorting each remaining sublist range.
     TODO: Best case running time: O(n log n) as this is a standard recursive call stack as the array is being split
     TODO: Worst case running time: O(n^2) if pivot is largest or smallest element
     TODO: Memory usage: O(log n) as normal recursive depth is logarithmic
     """
+    if high is None:
+        high = len(items) - 1
 
     # base case if the list has length of 0 or 1
     if low >= high:
