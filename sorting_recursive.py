@@ -101,7 +101,7 @@ def partition(items, low, high):
             items[p], items[current] = items[current], items[p]
             p += 1
 
-    # move pivot into final position
+    # move pivot into final position and return it
     items[p], items[high] = items[high], items[p]
     return p
 
@@ -114,13 +114,13 @@ def quick_sort(items, low=None, high=None):
     TODO: Memory usage: O(log n) as normal recursive depth is logarithmic
     """
 
-    # Base case
+    # base case if the list has length of 0 or 1
     if low >= high:
         return
 
-    # Partition the list
+    # partition the list with the helper method to get our pivot
     p = partition(items, low, high)
 
-    # Recursively sort sublists
+    # recursively sort the sublists to the left and right of the pivot
     quick_sort(items, low, p - 1)
     quick_sort(items, p + 1, high)
